@@ -1,5 +1,51 @@
+*{
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+html, body, #root, .base {
+  height:100%;
+}
+header, footer {
+  display: flex;
+  justify-content: center;
+  height: 10vh;
+}
+.base {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.navigation {
+  display: flex;
+  justify-content: center;
+}
+
+.nav {
+  display: flex;
+  flex: 1 1 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-right:40px;
+}
+
+.nav li:hover {
+    background-color: #7f7f7f;
+    border-radius: 15px;
+}
+.nav li {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.content {
+  display: flex;
+  flex: 1;
+  justify-content: center;
 }
