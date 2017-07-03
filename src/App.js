@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
 import './App.css';
+import Layout from './Layout';
+import Main from './Main'
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
 
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started,edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    constructor (props) {
+        super(props);
+        this.state = {
+            currentPage:'Main'
+        };
+        this.handleNavigationClick = this.handleNavigationClick.bind(this);
+    }
+
+
+    handleNavigationClick(newPage) {
+        this.setState({
+            currentPage: newPage
+        })
+    }
+
+
+    render() {
+        return (
+            <Layout
+                currentPage={ this.state.currentPage }
+                onNavigationClick={ this.handleNavigationClick }>
+                <Main />
+            </Layout>
+    )
+    }
 }
 
 export default App;
