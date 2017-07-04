@@ -6,7 +6,7 @@ class Layout extends Component {
         var pages = ['Startsida', 'Uppfödningar', 'Bilder', 'Videor', 'Till salu', 'Kalender', 'Kontaktuppgifter'];
 
         return (
-            <div className="base">
+            <div className="w3-container">
                 <header>Seaside Horses | Stall Seaside </header>
                     <div className="navigation">
                         <ul className="nav">

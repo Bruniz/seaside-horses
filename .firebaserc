@@ -1,5 +1,6 @@
 {
   "projects": {
-    "app": "seaside-horses"
+    "app": "seaside-horses",
+    "default": "seaside-horses"
   }
 }
