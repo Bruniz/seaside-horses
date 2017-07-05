@@ -1,36 +1,30 @@
 import React, { Component } from 'react';
-import './css/App.css';
+import {BrowserRouter, Route} from 'react-router-dom';
 import Layout from './Layout';
 import Main from './Main'
+import Horses from './Horses'
+import Images from './Images'
+import Videos from './Videos'
+import ForSale from './ForSale'
+import EventCalender from './EventCalender'
+import Contact from './Contact'
 
 
-class App extends Component {
-
-    constructor (props) {
-        super(props);
-        this.state = {
-            currentPage:'Main'
-        };
-        this.handleNavigationClick = this.handleNavigationClick.bind(this);
-    }
-
-
-    handleNavigationClick(newPage) {
-        this.setState({
-            currentPage: newPage
-        })
-    }
-
+export default class App extends Component {
 
     render() {
         return (
-            <Layout
-                currentPage={ this.state.currentPage }
-                onNavigationClick={ this.handleNavigationClick }>
-                <Main />
-            </Layout>
+            <BrowserRouter>
+                <Layout>
+                    <Route exact path='/' component={Main} />
+                    <Route path='/uppfödningar' component={Horses} />
+                    <Route path='/bilder' component={Images} />
+                    <Route path='/videor' component={Videos} />
+                    <Route path='/till-salu' component={ForSale} />
+                    <Route path='/kalender' component={EventCalender} />
+                    <Route path='/kontaktuppgifter' component={Contact} />
+                </Layout>
+            </BrowserRouter>
     )
     }
 }
-
-export default App;
