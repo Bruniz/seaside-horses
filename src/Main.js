@@ -27,9 +27,9 @@ export default class Main extends Component {
 
         return (
             <div className="content">
-                {this.state.content}
-                <div className="panorama">
-                    <img src={panorama} alt="Panorama of Seaside"/>
+                <h4 dangerouslySetInnerHTML={{__html: this.state.content}}/>
+                <div className="panorama ">
+                    <img src={panorama} alt="Panorama of Seaside Stable" className="w3-round-large hoverZoomLink"/>
                 </div>
 
                 <hr className = "bottomHr"/>
