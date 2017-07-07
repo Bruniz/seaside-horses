@@ -13,32 +13,41 @@ html, body, #root, .base {
 }
 #root {
     display:flex;
-    flex-direction: row;
     justify-content: center;
 }
 .base {
     display: flex;
-    flex: 1 1 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     max-width: 1200px;
 }
 footer {
-  display: flex;
-  justify-content: center;
-  height: 10vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow:0;
+    flex-shrink:1;
+    justify-content: space-around;
+    height: 10vh;
 }
 header {
     display: flex;
-
     height:auto;
     font-size: 0;
     flex-grow: 0;
-    -webkit-flex-flow: row wrap;
+    flex-shrink: 1;
+    flex-direction: row;
 }
 header div {
-    -webkit-flex: auto;
-    -ms-flex: auto;
-    flex: auto;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-direction: column;
     width: 200px;
     margin: .5vw;
 }
@@ -51,21 +60,31 @@ header div img {
     header { padding: 0; }
 
 }
+.panorama img {
+    width:100%;
+    height: auto;
+}
 .base {
     display: flex;
+    flex-shrink:1;
+    flex-grow:0;
+    flex-wrap: nowrap;
     flex-direction: column;
     justify-content: space-around;
 }
 .navigation {
     display: flex;
+    flex-direction: column;
     flex-grow:0;
+    flex-shrink: 0;
     justify-content: center;
 }
 
 .nav {
     display: flex;
     flex-direction: row;
-    flex: 1;
+    flex-grow:1;
+    flex-shrink:1;
     justify-content: space-around;
     flex-wrap: wrap;
     list-style: none;
@@ -95,19 +114,37 @@ header div img {
 }
 
 hr {
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
     padding-left: 5px;
     padding-right: 5px;
     margin-bottom: 15px;
     margin-top: 5px;
-    margin-left: 5px;
     border: 0;
     height: 5px;
     background-color: #7f7f7f;
     border-radius: 3px;
 }
+.bottomHr {
+    width: 100%;
+}
 .content {
     display: flex;
-    flex-direction: column;
-    flex-grow: 10;
-    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-grow: 0;
+    flex-shrink: 1;
+    justify-content: space-around;
+}
+.contact, .follow {
+    padding: 20px;
+}
+.socialIcons {
+    display:flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+}
+.socialIcons a {
+    padding:5px;
 }

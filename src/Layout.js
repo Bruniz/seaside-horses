@@ -23,32 +23,9 @@ export default class Layout extends Component {
                             <LiNavLink activeClassName="active" to="/kalender">Kalender</LiNavLink>
                             <LiNavLink activeClassName="active" to="/kontaktuppgifter">Kontaktuppgifter</LiNavLink>
                         </ul>
-                    </div>
-                <hr/>
-                {this.props.children}
-                <hr/>
-                <footer>
-                    <div className="contact">
-                        <h2> Kontakta oss</h2>
                         <hr/>
-                        <h3>
-                            <p>
-                                Stall Seaside
-                            </p>
-                            <p>
-                                Skåldövägen 64 <br/>
-                                10600 Ekenäs
-                            </p>
-                            <p>
-                                Telefon: 040-5636326 <br/>
-                                Epost: stall.seaside.talli@gmail.com
-                            </p>
-                        </h3>
                     </div>
-                    <div className="follow">
-                        <h2>Följ oss</h2>
-                    </div>
-                </footer>
+                {this.props.children}
             </div>
         )
     }
