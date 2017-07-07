@@ -18,21 +18,18 @@ export default class Main extends Component {
 
     componentWillMount() {
         let textRef = fire.database().ref('framsida');
-        textRef.on('child_added', snapshot => {
-            /* Update React state when message is added at Firebase Database */
-            let message = { text: snapshot.val(), id: snapshot.key };
-            this.setState({ content: message });
+        textRef.on('value', snapshot => {
+            let response = { text: snapshot.val(), id: snapshot.key };
+            this.setState({ content: response.text });
         })
     }
     render () {
 
         return (
             <div className="content">
-                <h4>
-                    {this.state.content}
-                </h4>
+                {this.state.content}
                 <div className="panorama">
-                    <img src={panorama} alt="Seaside"/>
+                    <img src={panorama} alt="Panorama of Seaside"/>
                 </div>
 
                 <hr className = "bottomHr"/>

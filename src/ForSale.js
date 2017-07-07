@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from './Footer';
 
 export default class ForSale extends Component {
 
@@ -7,6 +8,9 @@ export default class ForSale extends Component {
         return (
             <div className="content">
                 Saker till salu
+
+                <hr className = "bottomHr"/>
+                <Footer />
             </div>
         )
     }

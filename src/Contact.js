@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from './Footer';
 
 export default class Contact extends Component {
 
@@ -7,6 +8,9 @@ export default class Contact extends Component {
         return (
             <div className="content">
                 Kontaktuppgifter här
+
+                <hr className = "bottomHr"/>
+                <Footer />
             </div>
         )
     }
