@@ -17,7 +17,7 @@ export default class Main extends Component {
     }
 
     componentWillMount() {
-        let textRef = fire.database().ref('framsida');
+        let textRef = fire.database().ref('frontpage/se');
         textRef.on('value', snapshot => {
             let response = { text: snapshot.val(), id: snapshot.key };
             this.setState({ content: response.text });

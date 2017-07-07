@@ -63,6 +63,7 @@ header div img {
 .panorama img {
     width:100%;
     height: auto;
+    padding-bottom: 20px;
 }
 .base {
     display: flex;
