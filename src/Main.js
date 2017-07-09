@@ -27,6 +27,7 @@ export default class Main extends Component {
 
         return (
             <div className="content">
+                <hr className = "topHr"/>
                 <h4 dangerouslySetInnerHTML={{__html: this.state.content}}/>
                 <div className="panorama ">
                     <img src={panorama} alt="Panorama of Seaside Stable" className="w3-round-large hoverZoomLink"/>
