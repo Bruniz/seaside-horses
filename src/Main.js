@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import fetch from 'isomorphic-fetch';
 import Footer from './Footer';
-import /*fire,*/ { auth, /*provider*/ } from './fire';
+import fire, { auth, /*provider*/ } from './fire';
 var panorama = "https://lh5.googleusercontent.com/-EjzgqSgniSI/Uzqq1hyQL9I/AAAAAAAACkQ/I2Z7GwHhMw4/s1100/DSC03561.JPG";
 
 
@@ -39,25 +38,22 @@ export default class Main extends Component {
             }
         });
 
-        fetch(this.state.dbURL)
-            .then(res => this.setState({content: res.json()}));
-
-        // let textRef = fire.database().ref(this.state.dbURL);
-        // let items = [];
-        // textRef.on('value', snapshot => {
-        //     items.push(snapshot.val());
-        //     this.setState({ content: items[0] });
-        // })
+        let textRef = fire.database().ref(this.state.dbURL);
+        let items = [];
+        textRef.on('value', snapshot => {
+            items.push(snapshot.val());
+            this.setState({ content: items[0] });
+        })
     }
 
     render () {
 
+        const content = this.state.content.map( (item, key) => <p key={key}> {item} </p>);
+
         return (
             <div className="content">
                 <hr className = "topHr"/>
-                <h4>
-                    {/*{this.state.content.map( (item, key) => <p key={key}> {item} </p>})*/}
-                </h4>
+                <h4> {content}</h4>
                 <div className="panorama ">
                     <img src={panorama} alt="Panorama of Seaside Stable" className="w3-round-large hoverZoomLink"/>
                 </div>

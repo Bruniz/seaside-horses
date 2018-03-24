@@ -13,7 +13,7 @@ export default class Layout extends Component {
                     <LiNavLink activeClassName="current" to="/fi/homepage">English</LiNavLink>
                 </ul>
                 <header>
-                    <img src="" alt="Banner" className="w3-round-large hoverZoomLink"></img>
+                    <img src="https://storage.googleapis.com/stall-seaside-talli.appspot.com/Banner.png" alt="Banner" className="w3-round-large hoverZoomLink"></img>
                 </header>
                     <div className="navigation">
                         <ul className="nav">

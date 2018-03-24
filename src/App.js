@@ -41,8 +41,6 @@ export default class App extends Component {
             });
     }
 
-    staticContext = {};
-
     render() {
         return (
                 <Layout>
