@@ -1,5 +1,9 @@
 node_modules/*
+functions/node_modules/*
+functions/index.js
+functions/src/*
 build/*
 .idea/*
 *.log
 seaside-horses.iml
+
