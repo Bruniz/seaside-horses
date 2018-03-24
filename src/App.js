@@ -18,6 +18,9 @@ export default class App extends Component {
             <BrowserRouter>
                 <Layout>
                     <Route exact path='/' component={Main} />
+                    <Route path='/startsida' component={Main} />
+                    <Route path='/etusivu' component={Main} />
+                    <Route path='/homepage' component={Main} />
                     <Route path='/uppfödningar' component={Horses} />
                     <Route path='/bilder' component={Images} />
                     <Route path='/videor' component={Videos} />

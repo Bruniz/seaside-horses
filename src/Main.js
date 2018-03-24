@@ -17,22 +17,20 @@ export default class Main extends Component {
     }
 
     componentWillMount() {
-        let textRef = fire.database().ref('framsida');
-        textRef.on('child_added', snapshot => {
-            /* Update React state when message is added at Firebase Database */
-            let message = { text: snapshot.val(), id: snapshot.key };
-            this.setState({ content: message });
+        let textRef = fire.database().ref('frontpage/se');
+        textRef.on('value', snapshot => {
+            let response = { text: snapshot.val(), id: snapshot.key };
+            this.setState({ content: response.text });
         })
     }
     render () {
 
         return (
             <div className="content">
-                <h4>
-                    {this.state.content}
-                </h4>
-                <div className="panorama">
-                    <img src={panorama} alt="Seaside"/>
+                <hr className = "topHr"/>
+                <h4 dangerouslySetInnerHTML={{__html: this.state.content}}/>
+                <div className="panorama ">
+                    <img src={panorama} alt="Panorama of Seaside Stable" className="w3-round-large hoverZoomLink"/>
                 </div>
 
                 <hr className = "bottomHr"/>

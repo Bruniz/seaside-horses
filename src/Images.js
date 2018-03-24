@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from './Footer';
 
 export default class Images extends Component {
 
@@ -7,6 +8,9 @@ export default class Images extends Component {
         return (
             <div className="content">
                 Bilder här
+
+                <hr className = "bottomHr"/>
+                <Footer />
             </div>
         )
     }

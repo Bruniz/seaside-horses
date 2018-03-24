@@ -28,18 +28,30 @@ export default class Footer extends Component {
                     <h2>Följ oss</h2>
                     <hr/>
                     <div className="socialIcons">
-                        <a href="http://www.facebook.com/stallseasidetalli">
-                            <img src="http://seasidehorses.fi/facebook.png" className="w3-hover-opacity" alt="Facebook"/>
-                        </a>
-                        <a href="http://www.instagram.com/seasidehorses">
-                            <img src="http://seasidehorses.fi/instagram.png" className="w3-hover-opacity" alt="Instagram"/>
-                        </a>
-                        <a href="http://www.youtube.com/stallseasidetalli">
-                            <img src="http://seasidehorses.fi/youtube.png" className="w3-hover-opacity" alt="YouTube"/>
-                        </a>
-                        <a href="https://www.google.com/maps/dir/current+location/59.900820,23.480582">
-                            <img src="http://seasidehorses.fi/location.png" className="w3-hover-opacity" alt="Navigate"/>
-                        </a>
+                        <ul>
+                            <li>
+                                <a href="http://www.facebook.com/stallseasidetalli">
+                                    <img src="http://seasidehorses.fi/facebook.png" className="w3-hover-opacity" alt="Facebook"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.instagram.com/seasidehorses">
+                                    <img src="http://seasidehorses.fi/instagram.png" className="w3-hover-opacity" alt="Instagram"/>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="http://www.youtube.com/stallseasidetalli">
+                                    <img src="http://seasidehorses.fi/youtube.png" className="w3-hover-opacity" alt="YouTube"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.google.com/maps/dir/current+location/59.900820,23.480582">
+                                    <img src="http://seasidehorses.fi/location.png" className="w3-hover-opacity" alt="Navigate"/>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Footer from './Footer';
 export default class EventCalender extends Component {
 
     render () {
@@ -7,6 +7,9 @@ export default class EventCalender extends Component {
         return (
             <div className="content">
                Händelse kalender hit
+
+                <hr className = "bottomHr"/>
+                <Footer />
             </div>
         )
     }
