@@ -1,2 +1,2 @@
 # seaside-horses
-Homepage of SeasideHorses.fi implemented using react.js and powered by Firebase
+Future homepage of Seasidehorses.fi implemented using React.js and powered by Firebase
