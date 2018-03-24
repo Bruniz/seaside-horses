@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
 import Footer from './Footer';
-import fire, { auth, provider } from './fire';
+import /*fire,*/ { auth, /*provider*/ } from './fire';
 var panorama = "https://lh5.googleusercontent.com/-EjzgqSgniSI/Uzqq1hyQL9I/AAAAAAAACkQ/I2Z7GwHhMw4/s1100/DSC03561.JPG";
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import fire, { auth, provider } from './fire';
+import { Route, Switch} from 'react-router-dom';
+import /*fire, */{ auth, provider } from './fire';
 
 import Layout from './Layout';
 import Main from './Main'
