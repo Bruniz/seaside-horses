@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import fetch from 'isomorphic-fetch';
 import Footer from './Footer';
 import fire, { auth, provider } from './fire';
 var panorama = "https://lh5.googleusercontent.com/-EjzgqSgniSI/Uzqq1hyQL9I/AAAAAAAACkQ/I2Z7GwHhMw4/s1100/DSC03561.JPG";
@@ -23,7 +24,11 @@ export default class Main extends Component {
 
     }
     componentWillMount() {
-        this.setState({currentLanguage: this.props.currentLanguage, user: this.props.user, dbURL:`frontpage/${this.props.currentLanguage}`})
+        this.setState({
+            currentLanguage: this.props.currentLanguage,
+            user: this.props.user,
+            dbURL:`frontpage/${this.props.currentLanguage}`
+        })
 
     }
 
@@ -34,12 +39,15 @@ export default class Main extends Component {
             }
         });
 
-        let textRef = fire.database().ref(this.state.dbURL);
-        let items = [];
-        textRef.on('value', snapshot => {
-            items.push(snapshot.val());
-            this.setState({ content: items[0] });
-        })
+        fetch(this.state.dbURL)
+            .then(res => this.setState({content: res.json()}));
+
+        // let textRef = fire.database().ref(this.state.dbURL);
+        // let items = [];
+        // textRef.on('value', snapshot => {
+        //     items.push(snapshot.val());
+        //     this.setState({ content: items[0] });
+        // })
     }
 
     render () {

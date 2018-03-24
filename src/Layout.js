@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link, Route} from 'react-router-dom';
-import Banner from './images/Banner.png';
 
 export default class Layout extends Component {
 
@@ -14,7 +13,7 @@ export default class Layout extends Component {
                     <LiNavLink activeClassName="current" to="/fi/homepage">English</LiNavLink>
                 </ul>
                 <header>
-                    <img src={Banner} alt="Banner" className="w3-round-large hoverZoomLink"></img>
+                    <img src="" alt="Banner" className="w3-round-large hoverZoomLink"></img>
                 </header>
                     <div className="navigation">
                         <ul className="nav">
