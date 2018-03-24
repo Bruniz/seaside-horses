@@ -4,6 +4,8 @@ import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
 import App from './src/App';
 import express from 'express';
+import './css/w3.css';
+import './css/index.css';
 
 const app = express();
 

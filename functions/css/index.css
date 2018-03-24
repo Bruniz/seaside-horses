@@ -1,0 +1,199 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #cdcecf;
+}
+html, body, #root, .base {
+    height:100%;
+}
+#root {
+    display:flex;
+    justify-content: center;
+}
+.base {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+footer {
+    display: flex;
+    flex: 1 100%;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+header {
+    display: flex;
+    flex-direction: column;
+    flex: 1 100%;
+
+}
+header img {
+    width: 100%;
+    height: auto;
+}
+@media screen and (max-width: 400px) {
+    header div { margin: 0; }
+    header { padding: 0; }
+
+}
+.panorama img {
+    width:100%;
+    height: auto;
+    padding-bottom: 20px;
+}
+.navigation {
+    display: flex;
+    flex: 1 100%;
+    justify-content: center;
+    width: 100%;
+    flex-direction: row;
+}
+
+/* Large */
+.nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 100%;
+    padding-right: 40px;
+}
+
+/* Medium screens */
+@media all and (max-width: 800px) {
+    .nav {
+        /* When on medium sized screens, we center it by evenly distributing empty space around items */
+        justify-content: space-around;
+    }
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+    .nav {
+        /* On small screens, we are no longer using row direction but column */
+        flex-direction: column;
+    }
+    .nav li {
+        display: flex;
+        justify-content: center;
+    }
+    .nav li:hover {
+        background-color: #7f7f7f;
+        color:white;
+        border-radius: 15px;
+    }
+}
+
+.nav li a:hover, .language li a:hover  {
+    background-color: #7f7f7f;
+    color:white;
+    border-radius: 15px;
+}
+.nav li{
+    padding: 5px;
+    display: flex;
+    align-content: space-between;
+}
+.active {
+    border-bottom: white solid 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.nav li a {
+    text-decoration: none;
+    display: flex;
+    align-self: center;
+    padding: 5px;
+    font-size: 20px;
+}
+
+hr {
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    border: 0;
+    height: 5px;
+    background-color: #7f7f7f;
+    border-radius: 3px;
+}
+.bottomHr, .topHr {
+    display: flex;
+    flex: 1 1 100%;
+    align-content: stretch;
+
+}
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-grow: 0;
+    flex-shrink: 1;
+    justify-content: space-around;
+}
+.contact, .follow {
+    padding: 20px;
+}
+.socialIcons {
+    display:flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+}
+.socialIcons ul {
+    padding:5px;
+
+}
+.socialIcons ul li {
+    list-style: none;
+    padding: 5px;
+}
+.language {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.language li a {
+    text-decoration: none;
+    padding: 0px 5px;
+}
+.language li a:hover {
+    background-color: #7f7f7f;
+    color:white;
+    border-radius: 15px;
+}
+.current {
+    border-bottom: white solid 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.contact h2, .follow h2{
+    padding-left: 20px;
+}
+.user-profile img {
+    width: 70px;
+    border-radius: 100px;
+}
+button {
+    border-radius: 2px;
+    min-width: 88px;
+    background-color: #7f7f7f;
+    cursor: pointer;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    padding: 5px 6px;
+    margin-bottom: 5px;
+}
