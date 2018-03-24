@@ -33,6 +33,6 @@
     "deploy": "firebase deploy",
     "webpack": "node_modules/.bin/webpack",
     "babel": "node_modules/.bin/babel src -d functions/src && node_modules/.bin/babel index.js -d functions",
-    "build": "npm run webpack && npm run babel && react-scripts build && cd functions && npm install"
+    "build": "npm run webpack && npm run babel && cd functions && npm install"
   }
 }
