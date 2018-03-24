@@ -56,11 +56,7 @@ export default class Main extends Component {
             <div className="content">
                 <hr className = "topHr"/>
                 <h4>
-                    {/*{this.state.content.map( (item, key) => {
-                        return(
-                            <p key={key}> {item} </p>
-                        );
-                    })}*/}
+                    {/*{this.state.content.map( (item, key) => <p key={key}> {item} </p>})*/}
                 </h4>
                 <div className="panorama ">
                     <img src={panorama} alt="Panorama of Seaside Stable" className="w3-round-large hoverZoomLink"/>
