@@ -41,27 +41,27 @@ export default class App extends Component {
             });
     }
 
+    staticContext = {};
+
     render() {
         return (
-
-            <Layout>
-                <Switch>
-                    <Route exact path='/' render={ () => <Main currentLanguage = {"se"} />} />
-                    <Route exact path='/se/' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
-                    <Route path='/se/startsida' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
-                    <Route path='/fi/etusivu' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
-                    <Route path='/en/homepage' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
-                    <Route path='/se/uppfödningar' component={Horses} />
-                    <Route path='/se/bilder' component={Images} />
-                    <Route path='/se/videor' component={Videos} />
-                    <Route path='/se/till-salu' component={ForSale} />
-                    <Route path='/se/kalender' component={EventCalender} />
-                    <Route path='/se/kontaktuppgifter' component={Contact} />
-                    <Route path='/en/homepage' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
-                    <Route path='*' render={ () => <h1>Page not found</h1>} />
-                </Switch>
-
-            </Layout>
+                <Layout>
+                    <Switch>
+                        <Route exact path='/' render={ () => <Main currentLanguage = {"se"} />} />
+                        <Route exact path='/se/' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
+                        <Route path='/se/startsida' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
+                        <Route path='/fi/etusivu' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
+                        <Route path='/en/homepage' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
+                        <Route path='/se/uppfödningar' component={Horses} />
+                        <Route path='/se/bilder' component={Images} />
+                        <Route path='/se/videor' component={Videos} />
+                        <Route path='/se/till-salu' component={ForSale} />
+                        <Route path='/se/kalender' component={EventCalender} />
+                        <Route path='/se/kontaktuppgifter' component={Contact} />
+                        <Route path='/en/homepage' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
+                        <Route path='*' render={ () => <h1>Page not found</h1>} />
+                    </Switch>
+                </Layout>
     )
     }
 }

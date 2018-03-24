@@ -4,11 +4,14 @@
   },
   "hosting": {
     "public": "build",
-    "rewrites": [
-      {
-        "source": "**",
-        "function": "App"
-      }
-    ]
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [{
+      "source": "**",
+      "function": "ssrapp"
+    }]
   }
 }
