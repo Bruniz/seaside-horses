@@ -10,7 +10,7 @@ export default class Layout extends Component {
                 <ul className="language">
                     <LiNavLink activeClassName="current" to="/se/startsida">Svenska</LiNavLink>
                     <LiNavLink activeClassName="current" to="/fi/etusivu">Suomeksi</LiNavLink>
-                    <LiNavLink activeClassName="current" to="/fi/homepage">English</LiNavLink>
+                    <LiNavLink activeClassName="current" to="/en/homepage">English</LiNavLink>
                 </ul>
                 <header>
                     <img src="https://storage.googleapis.com/stall-seaside-talli.appspot.com/Banner.png" alt="Banner" className="w3-round-large hoverZoomLink"></img>
