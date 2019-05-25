@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch} from 'react-router-dom';
+import { Route, Switch, withRouter} from 'react-router-dom';
 import /*fire, */{ auth, provider } from './fire';
 
 import Layout from './Layout';
@@ -11,18 +11,18 @@ import ForSale from './ForSale'
 import EventCalender from './EventCalender'
 import Contact from './Contact'
 
-export default class App extends Component {
+class App extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            currentLanguage : "se",
-            user : null,
+            currentLanguage: '',
+            user: null,
+            languages: ['se', 'fi', 'en']
 
         }
     }
-
 
     logout() {
         auth.signOut()
@@ -39,6 +39,26 @@ export default class App extends Component {
                     user
                 });
             });
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.getCurrentLanguage();
+        }
+    }
+
+    getCurrentLanguage() {
+        const currentLanguage = this.props.location.pathname.split("/")[1];
+        if (this.state.languages.includes(currentLanguage)) {
+            this.setState({ currentLanguage });
+        }
+        else {
+            console.log("Unknown language selected");
+        }
+    }
+
+    componentWillMount(){
+        this.getCurrentLanguage();
     }
 
     render() {
@@ -62,4 +82,5 @@ export default class App extends Component {
                 </Layout>
     )
     }
-}
+} 
+export default withRouter(App)
