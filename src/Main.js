@@ -13,23 +13,36 @@ export default class Main extends Component {
 
         this.state = {
             content: [],
-            dbURL : "",
-            currentLanguage: "",
+            dbURL: "",
             user: null,
         }
 
 
     }
+
     handleChange(e) {
 
     }
+
     componentWillMount() {
         this.setState({
-            currentLanguage: this.props.currentLanguage,
             user: this.props.user,
             dbURL:`frontpage/${this.props.currentLanguage}`
         })
 
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.currentLanguage !== prevProps.currentLanguage ||
+            this.props.user !== prevProps.user) {
+
+            this.setState({
+                user: this.props.user,
+                dbURL:`frontpage/${this.props.currentLanguage}`
+            }, this.updateContent);
+            return true;
+        }
+        return false;
     }
 
     componentDidMount() {
@@ -39,14 +52,16 @@ export default class Main extends Component {
             }
         });
 
-        fetch(`${this.state.dbURL}.json`).then(res => this.setState({content: res.json()}));
+        this.updateContent();
+    }
 
+    updateContent() {
         let textRef = fire.database().ref(this.state.dbURL);
         let items = [];
         textRef.on('value', snapshot => {
             items.push(snapshot.val());
             this.setState({ content: items[0] });
-        })
+        });
     }
 
     render () {
