@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter} from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter} from 'react-router-dom';
 import /*fire, */{ auth, provider } from './fire';
 
 import Layout from './Layout';
@@ -18,6 +18,7 @@ class App extends Component {
 
         this.state = {
             currentLanguage: '',
+            currentPage: '',
             user: null,
             languages: ['se', 'fi', 'en']
 
@@ -43,14 +44,19 @@ class App extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.location !== prevProps.location) {
-            this.getCurrentLanguage();
+            this.setCurrentRoute();
         }
     }
 
-    getCurrentLanguage() {
-        const currentLanguage = this.props.location.pathname.split("/")[1];
+    setCurrentRoute() {
+        const path = this.props.location.pathname.split("/");
+        if (path[1] === "" || path[2] === "") {
+            return;
+        }
+        const currentLanguage = path[1];
+        const currentPage = path[2];
         if (this.state.languages.includes(currentLanguage)) {
-            this.setState({ currentLanguage });
+            this.setState({ currentLanguage, currentPage });
         }
         else {
             console.log("Unknown language selected");
@@ -58,25 +64,26 @@ class App extends Component {
     }
 
     componentWillMount(){
-        this.getCurrentLanguage();
+        this.setCurrentRoute();
     }
 
     render() {
+        const {currentLanguage, currentPage} = this.state;
         return (
-                <Layout>
+                <Layout currentLanguage={currentLanguage}>
                     <Switch>
-                        <Route exact path='/' render={ () => <Main currentLanguage = {"se"} />} />
-                        <Route exact path='/se/' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
-                        <Route path='/se/startsida' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
-                        <Route path='/fi/etusivu' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
-                        <Route path='/en/homepage' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
+                        <Route exact path='/' render={() => <Redirect to='/se/startsida'/>} />
+                        <Route exact path='/se/' render={ () => <Main currentLanguage = {currentLanguage} />} />
+                        <Route path='/se/startsida' render={ () => <Main currentLanguage = {currentLanguage} />} />
+                        <Route path='/fi/etusivu' render={ () => <Main currentLanguage = {currentLanguage} />} />
+                        <Route path='/en/homepage' render={ () => <Main currentLanguage = {currentLanguage} />} />
                         <Route path='/se/uppfödningar' component={Horses} />
                         <Route path='/se/bilder' component={Images} />
                         <Route path='/se/videor' component={Videos} />
                         <Route path='/se/till-salu' component={ForSale} />
                         <Route path='/se/kalender' component={EventCalender} />
                         <Route path='/se/kontaktuppgifter' component={Contact} />
-                        <Route path='/en/homepage' render={ () => <Main currentLanguage = {this.state.currentLanguage} />} />
+                        <Route path='/en/homepage' render={ () => <Main currentLanguage = {currentLanguage} />} />
                         <Route path='*' render={ () => <h1>Page not found</h1>} />
                     </Switch>
                 </Layout>
