@@ -29,10 +29,10 @@ app.get('**', (req, res) => {
         <StaticRouter context={staticContext} location={req.url}>
           <App state={{
             content: pageContents,
-            currentLanguage,
-            currentPage,
-            user,
-            languages
+            currentLanguage: currentLanguage,
+            currentPage: currentPage,
+            user: user,
+            languages: languages
           }}
           />
         </StaticRouter>)
