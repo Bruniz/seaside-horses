@@ -17,13 +17,24 @@ class App extends Component {
     constructor(props) {
         super(props);
         console.log(JSON.stringify(props.content));
-        this.state = {
-            currentLanguage: '',
-            currentPage: '',
-            content: [],
-            user: null,
-            languages: ['se', 'fi', 'en']
+        if (props.conten) {
+            his.state = {
+                currentLanguage: '',
+                currentPage: '',
+                content: props.content,
+                user: null,
+                languages: ['se', 'fi', 'en']
 
+            }
+        } else {
+            this.state = {
+                currentLanguage: '',
+                currentPage: '',
+                content: [],
+                user: null,
+                languages: ['se', 'fi', 'en']
+
+            }
         }
     }
 
