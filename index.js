@@ -58,4 +58,4 @@ app.get('**', (req, res) => {
 
 });
 
-export let ssrapp = functions.https.onRequest(app);
+export let ssrapp = functions.region('europe-west1').https.onRequest(app);

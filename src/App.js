@@ -17,8 +17,8 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        if (props.state) {
-            this.state = props.state
+        if (this.props.state) {
+            this.state = this.props.state
         } else {
             this.state = {
                 currentLanguage: '',
