@@ -16,9 +16,9 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        console.log(JSON.stringify(props.content));
-        if (props.conten) {
-            his.state = {
+
+        if (props.content) {
+            this.state = {
                 currentLanguage: '',
                 currentPage: '',
                 content: props.content,
