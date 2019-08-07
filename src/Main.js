@@ -48,13 +48,13 @@ export default class Main extends Component {
                 this.setState({ user });
             }
         });
-        if (this.state.currentLanguage) {
+        if (this.props.currentLanguage) {
             this.updateContent();
         }
     }
 
     updateContent() {
-        fetch(`https://seaside-horses.firebaseio.com/${this.state.dbURL}.json`)
+        fetch(`https://seaside-horses.firebaseio.com/${this.props.currentLanguage}/${this.props.currentPage}.json`)
             .then(res => { return res.json() })
             .then(content => { this.setState({ content }) });
         // let textRef = fire.database().ref(this.state.dbURL);
@@ -66,7 +66,8 @@ export default class Main extends Component {
     }
 
     render() {
-        const content = this.state.content.map((item, key) => <p key={key}> {item} </p>);
+        const data = this.props.content;
+        const content = data && data.length > 0 && data.map((item, key) => <p key={key}> {item} </p>);
 
         return (
             <div className="content">
