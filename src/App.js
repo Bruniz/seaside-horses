@@ -17,15 +17,8 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        if (props.content) {
-            this.state = {
-                currentLanguage: '',
-                currentPage: '',
-                content: props.content,
-                user: null,
-                languages: ['se', 'fi', 'en']
-
-            }
+        if (props.state) {
+            this.state = props.state
         } else {
             this.state = {
                 currentLanguage: '',
@@ -83,8 +76,10 @@ class App extends Component {
         }
     }
 
-    componentWillMount() {
-        this.fetchContent();
+    componentWillMount(props) {
+        if (!props.state.content) {
+            this.fetchContent();
+        }
     }
 
     render() {

@@ -13,17 +13,30 @@ const staticContext = {};
 const languages = ['se', 'fi', 'en'];
 app.get('**', (req, res) => {
   const urlSplit = req.url.split("/");
-  let language = 'se';
+  let currentLanguage = 'se';
+  let currentPage = 'frontpage';
+  let user = null;
 
   if (languages.includes(urlSplit[1])) {
-    language = urlSplit[1];
+    currentLanguage = urlSplit[1];
   }
 
-  fetch(`https://seaside-horses.firebaseio.com/frontpage/${language}.json`)
+  fetch(`https://seaside-horses.firebaseio.com/frontpage/${currentLanguage}.json`)
     .then(response => { return response.json(); })
     .then(pageContents => {
       console.log(`page contents: ${pageContents}`);
-      const content = renderToString(<StaticRouter context={staticContext} location={req.url}><App content={pageContents} /></StaticRouter>);
+      const content = renderToString(
+        <StaticRouter context={staticContext} location={req.url}>
+          <App state={{
+            content: pageContents,
+            currentLanguage,
+            currentPage,
+            user,
+            languages
+          }}
+          />
+        </StaticRouter>)
+        ;
       res.send(`
         <!DOCTYPE html>
         <html lang="en">
