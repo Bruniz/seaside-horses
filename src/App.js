@@ -76,8 +76,8 @@ class App extends Component {
         }
     }
 
-    componentWillMount(props) {
-        if (!props.state.content) {
+    componentDidMount() {
+        if (!this.props.state.content) {
             this.fetchContent();
         }
     }
