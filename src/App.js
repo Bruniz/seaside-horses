@@ -77,7 +77,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.state.content) {
+        if (!this.props.state) {
             this.fetchContent();
         }
     }
@@ -89,7 +89,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' render={() => <Redirect to='/se/startsida' />} />
                     <Route exact path='/se/' render={() => <Redirect to='/se/startsida' />} />
-                    <Route path='/se/startsida' render={() => <Main content={this.props.content} />} />
+                    <Route path='/se/startsida' render={() => <Main content={this.props.state.content || content} />} />
                     <Route path='/fi/etusivu' render={() => <Main currentLanguage={currentLanguage} />} />
                     <Route path='/en/homepage' render={() => <Main currentLanguage={currentLanguage} />} />
                     <Route path='/se/uppfödningar' component={Horses} />
