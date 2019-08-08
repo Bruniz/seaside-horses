@@ -89,7 +89,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' render={() => <Redirect to='/se/startsida' />} />
                     <Route exact path='/se/' render={() => <Redirect to='/se/startsida' />} />
-                    <Route path='/se/startsida' render={() => <Main content={this.props.state.content || content} />} />
+                    <Route path='/se/startsida' render={() => <Main content={this.props.state && this.props.state.content || content} />} />
                     <Route path='/fi/etusivu' render={() => <Main currentLanguage={currentLanguage} />} />
                     <Route path='/en/homepage' render={() => <Main currentLanguage={currentLanguage} />} />
                     <Route path='/se/uppfödningar' component={Horses} />
