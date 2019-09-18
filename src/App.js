@@ -63,6 +63,7 @@ class App extends Component {
         const currentLanguage = path[1];
         const currentPage = path[2];
         console.log(`params: ${currentLanguage} ${currentPage}`);
+        console.log(this.props.state && "There is state");
 
         fetch(`https://seaside-horses.firebaseio.com/frontpage/${currentLanguage}.json`)
             .then(response => { return response.json(); })
@@ -89,7 +90,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' render={() => <Redirect to='/se/startsida' />} />
                     <Route exact path='/se/' render={() => <Redirect to='/se/startsida' />} />
-                    <Route path='/se/startsida' render={() => <Main content={this.props.state != undefined && this.props.state.content || content} />} />
+                    <Route path='/se/startsida' render={() => <Main content={content} />} />
                     <Route path='/fi/etusivu' render={() => <Main currentLanguage={currentLanguage} />} />
                     <Route path='/en/homepage' render={() => <Main currentLanguage={currentLanguage} />} />
                     <Route path='/se/uppfödningar' component={Horses} />
