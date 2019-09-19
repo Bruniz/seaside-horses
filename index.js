@@ -24,6 +24,7 @@ app.get('**', (req, res) => {
   fetch(`https://seaside-horses.firebaseio.com/frontpage/${currentLanguage}.json`)
     .then(response => { return response.json(); })
     .then(pageContents => {
+      console.log("Page content: " + pageContents);
       const content = renderToString(
         <StaticRouter context={staticContext} location={req.url}>
           <App state={{

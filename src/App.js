@@ -16,7 +16,7 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-
+        console.log('Props in App: ' + props);
         if (props.state) {
             this.state = props.state;
         } else {
