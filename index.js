@@ -20,11 +20,10 @@ app.get('**', (req, res) => {
   if (languages.includes(urlSplit[1])) {
     currentLanguage = urlSplit[1];
   }
-
+  console.log("Current language and page: " + currentLanguage, currentPage);
   fetch(`https://seaside-horses.firebaseio.com/frontpage/${currentLanguage}.json`)
     .then(response => { return response.json(); })
     .then(pageContents => {
-      console.log(`page contents: ${pageContents}`);
       const content = renderToString(
         <StaticRouter context={staticContext} location={req.url}>
           <App state={{
@@ -45,7 +44,7 @@ app.get('**', (req, res) => {
             <title>Seaside Horses</title>
             <link rel="stylesheet" type="text/css" href="/css/index.css">
             <link rel="stylesheet" type="text/css" href="/css/w3.css">
-          </head>
+          </head>4
           <body>
             <div id="root">${content}</div>
             <script type="text/javascript" src="/bundle.js"></script>
