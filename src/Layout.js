@@ -39,7 +39,7 @@ const LiNavLink = ({to,exact, strict, activeClassName, className, activeStyle, s
         exact={exact}
         strict={strict}
         children={({ location, match }) => {
-            const isActive = !!(getIsActive ? getIsActive(match, location) : match)
+            const isActive = (getIsActive ? getIsActive(match, location) : match)
 
             return (
                 <li

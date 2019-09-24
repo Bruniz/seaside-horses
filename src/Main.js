@@ -14,35 +14,32 @@ export default class Main extends Component {
         this.state = {
             content: [],
             dbURL: "",
+            currentLanguage: "",
             user: null,
         }
 
 
     }
-
     handleChange(e) {
 
     }
-
     componentWillMount() {
         this.setState({
+            currentLanguage: this.props.currentLanguage,
             user: this.props.user,
-            dbURL:`frontpage/${this.props.currentLanguage}`
-        })
-
+            dbURL: `frontpage/${this.props.currentLanguage}`
+        });
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.currentLanguage !== prevProps.currentLanguage ||
-            this.props.user !== prevProps.user) {
-
+            this.props.currentPage !== prevProps.currentPage) {
             this.setState({
+                currentLanguage: this.props.currentLanguage,
                 user: this.props.user,
-                dbURL:`frontpage/${this.props.currentLanguage}`
+                dbURL: `frontpage/${this.props.currentLanguage}`
             }, this.updateContent);
-            return true;
         }
-        return false;
     }
 
     componentDidMount() {
@@ -51,33 +48,37 @@ export default class Main extends Component {
                 this.setState({ user });
             }
         });
-
-        this.updateContent();
+        if (this.props.currentLanguage) {
+            this.updateContent();
+        }
     }
 
     updateContent() {
-        let textRef = fire.database().ref(this.state.dbURL);
-        let items = [];
-        textRef.on('value', snapshot => {
-            items.push(snapshot.val());
-            this.setState({ content: items[0] });
-        });
+        fetch(`https://seaside-horses.firebaseio.com/${this.props.currentLanguage}/${this.props.currentPage}.json`)
+            .then(res => { return res.json() })
+            .then(content => { this.setState({ content }) });
+        // let textRef = fire.database().ref(this.state.dbURL);
+        // let items = [];
+        // textRef.on('value', snapshot => {
+        //     items.push(snapshot.val());
+        //     this.setState({ content: items[0] });
+        // });
     }
 
-    render () {
-
-        const content = this.state.content.map( (item, key) => <p key={key}> {item} </p>);
+    render() {
+        const data = this.props.content;
+        const content = data && data.length > 0 && data.map((item, key) => <p key={key}> {item} </p>);
 
         return (
             <div className="content">
-                <hr className = "topHr"/>
+                <hr className="topHr" />
                 <h4> {content}</h4>
                 <div className="panorama ">
-                    <img src={panorama} alt="Panorama of Seaside Stable" className="w3-round-large hoverZoomLink"/>
+                    <img src={panorama} alt="Panorama of Seaside Stable" className="w3-round-large hoverZoomLink" />
                 </div>
-                <hr className = "bottomHr"/>
+                <hr className="bottomHr" />
                 <Footer />
-                {this.state.user ?
+                {/* {this.state.user ?
                     <button onClick={this.logout}>Log Out</button>
                     :
                     <button onClick={this.login}>Log In</button>
@@ -90,7 +91,7 @@ export default class Main extends Component {
                     <div className='wrapper'>
                         <p>Logged out</p>
                     </div>
-                }
+                } */}
             </div>
         )
     }
