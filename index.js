@@ -6,8 +6,6 @@ import App from './src/App';
 import express from 'express';
 import fetch from 'isomorphic-fetch';
 
-//const index = fs.readFileSync(__dirname + '/index.html', 'utf-8');
-
 const app = express();
 const staticContext = {};
 const languages = ['se', 'fi', 'en'];
@@ -20,11 +18,9 @@ app.get('**', (req, res) => {
   if (languages.includes(urlSplit[1])) {
     currentLanguage = urlSplit[1];
   }
-  console.log("Current language and page: " + currentLanguage, currentPage);
   fetch(`https://seaside-horses.firebaseio.com/frontpage/${currentLanguage}.json`)
     .then(response => { return response.json(); })
     .then(pageContents => {
-      console.log("Page content: " + pageContents);
       const content = renderToString(
         <StaticRouter context={staticContext} location={req.url}>
           <App state={{
@@ -45,7 +41,7 @@ app.get('**', (req, res) => {
             <title>Seaside Horses</title>
             <link rel="stylesheet" type="text/css" href="/css/index.css">
             <link rel="stylesheet" type="text/css" href="/css/w3.css">
-          </head>4
+          </head>
           <body>
             <div id="root">${content}</div>
             <script type="text/javascript" src="/bundle.js"></script>
@@ -53,9 +49,6 @@ app.get('**', (req, res) => {
         </html>
         `);
     });
-  //const html = index.replace('<!-- ::APP:: -->', content);
-  //res.set('Cache-Control', 'public, max-age=600, s-maxage=1200');
-
 });
 
 export let ssrapp = functions.region('us-central1').https.onRequest(app);

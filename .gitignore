@@ -7,3 +7,5 @@ build/bundle.js
 *.log
 seaside-horses.iml
 
+
+*.cache

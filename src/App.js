@@ -16,9 +16,8 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        console.log('Props in App: ' + props);
         if (props.state) {
-            this.state = props.state;
+            this.state = { ...props.state };
         } else {
             this.state = {
                 currentLanguage: '',
@@ -62,8 +61,6 @@ class App extends Component {
         }
         const currentLanguage = path[1];
         const currentPage = path[2];
-        console.log(`params: ${currentLanguage} ${currentPage}`);
-        console.log(this.props.state && "There is state");
 
         fetch(`https://seaside-horses.firebaseio.com/frontpage/${currentLanguage}.json`)
             .then(response => { return response.json(); })
